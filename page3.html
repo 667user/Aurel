@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau d'enregistrement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            background-color: #0000ff;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .admis {
+            background-color: blue;
+            color: white;
+        }
+        .non-admis {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tableau d'enregistrement</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Contact</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Lignes générées par JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        const noms = ["KPOKPOYA", "ICHOLA", "DURAND", "SALAH", "TOFFA-HOUNON", "LEGBA", "ISSIFOU", "DOHOU", "DEGLA", "SOBY", "YESSOUFOU", "DANSOU", "MACRON", "GOUGLA", "ZOU", "VICTOR", "MESSAN", "VYERA", "CODJIA", "Morel"];
+        const prenoms = ["Rémus", "Rydwan", "Ronaldo", "Mohamed", "Vianney", "Ariel", "Goufrane", "Jacques", "Vyriana", "Nicolas", "Maria", "Tobi", "Emmanuel", "Louis", "Camille", "Hugo", "Alice", "Julien", "Sarah", "Thomas"];
+        const tbody = document.querySelector('tbody');
+
+        for (let i = 1; i <= 20; i++) {
+            const row = document.createElement('tr');
+            const numero = document.createElement('td');
+            numero.textContent = i;
+            row.appendChild(numero);
+
+            const nom = document.createElement('td');
+            nom.textContent = noms[Math.floor(Math.random() * noms.length)];
+            row.appendChild(nom);
+
+            const prenom = document.createElement('td');
+            prenom.textContent = prenoms[Math.floor(Math.random() * prenoms.length)];
+            row.appendChild(prenom);
+
+            const contact = document.createElement('td');
+            contact.textContent = Math.floor(10000000 + Math.random() * 90000000);
+            row.appendChild(contact);
+
+            const status = document.createElement('td');
+            if (Math.random() < 0.75) {
+                status.textContent = 'Admis';
+                row.classList.add('admis');
+            } else {
+                status.textContent = 'Non Admis';
+                row.classList.add('non-admis');
+            }
+            row.appendChild(status);
+
+            tbody.appendChild(row);
+        }
+    </script>
+</body>
+</html>
